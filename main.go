@@ -18,7 +18,6 @@ func main() {
 		log.Fatal("error file configration")
 	}
 	fmt.Println(config)
-
 	db, err := database.InitDB(config.DB)
 	if err != nil {
 		panic(err)
@@ -32,8 +31,8 @@ func main() {
 
 	r := router.NewRouter(handler, service, logger)
 
-	fmt.Println("server running on port 8080")
-	if err := http.ListenAndServe(":8080", r); err != nil {
+	fmt.Println("server running on port " + config.Port)
+	if err := http.ListenAndServe(":"+config.Port, r); err != nil {
 		log.Fatal("error server")
 	}
 }

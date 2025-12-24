@@ -28,8 +28,8 @@ func InitDB(config utils.DatabaseCofig) (*pgxpool.Pool, error) {
 	}
 
 	// ---- Pool settings ----
-	cfg.MaxConns = 20 // max connection pool
-	cfg.MinConns = 5  // min connection pool
+	cfg.MaxConns = config.MaxConn // max connection pool
+	cfg.MinConns = 5              // min connection pool
 	cfg.MaxConnLifetime = 30 * time.Minute
 	cfg.MaxConnIdleTime = 5 * time.Minute
 	cfg.HealthCheckPeriod = 1 * time.Minute
